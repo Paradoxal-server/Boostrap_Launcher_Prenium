@@ -6,6 +6,7 @@ import static fr.theshark34.swinger.Swinger.getTransparentWhite;
 import java.awt.Color;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -33,18 +34,18 @@ public class Bootstrap {
 
 	public static final File P_B_DIR = new File(GameDirGenerator.createGameDir("paradoxal"),"Launcher");
 	public static CrashReporter crashReporter = new CrashReporter("Paradoxal Bootstrap",P_B_DIR);
-	
+	public static Logger logger = Logger.getLogger("Paradoxal");
 	private static SplashScreen splash;
 	private static SColoredBar bar;
-	private static Thread barthread;
 	
 	public static File crack = new File(P_B_DIR,"crack.txt");
 	public static File premiun = new File(P_B_DIR,"premiun.txt");
 	
-	private static JLabel infolabel = new JLabel("Bienvenu ! ",SwingConstants.CENTER);
+	private static JLabel infolabel = new JLabel("Bienvenue ! ",SwingConstants.CENTER);
 	@SuppressWarnings("unused")
 	private static JFrame frame;
 	public static int i = 0;
+	private static Thread barthread;
 	public static void main(String[] args) {
 		LanguageManager.setLang(LanguageManager.FRENCH);
 		
@@ -75,7 +76,7 @@ public class Bootstrap {
 				try {
 					doUpdate_crack();
 				}catch (Exception e) {
-					crashReporter.catchError(e, "Impossible de mettre à jour le launcher !");
+					crashReporter.catchError(e, "Impossible de mettre Ã  jour le launcher !");
 				}
 				phase_two();
 			}
@@ -85,7 +86,7 @@ public class Bootstrap {
 				try {
 					doUpdate_pre();
 				}catch (Exception e) {
-					crashReporter.catchError(e, "Impossible de mettre à jour le launcher !");
+					crashReporter.catchError(e, "Impossible de mettre Ã  jour le launcher !");
 				}
 				phase_two();
 			}
@@ -131,7 +132,7 @@ public class Bootstrap {
 				while(!this.isInterrupted())
 				{
 					if(BarAPI.getNumberOfFileToDownload() ==0 ) {
-						Bootstrap.setInfoText("Vérification des fichiers");
+						Bootstrap.setInfoText("VÃ©rification des fichiers");
 						Bootstrap.setBoundInfo(38, 320, 400, 30);
 						continue;
 					}
@@ -140,8 +141,8 @@ public class Bootstrap {
 					max = (int) (BarAPI.getNumberOfTotalBytesToDownload()/1000);
 					bar.setValue(val);
 					bar.setMaximum(max);
-
-					setInfoText("Téléchargement des fichiers "+BarAPI.getNumberOfDownloadedFiles()+" / "+BarAPI.getNumberOfFileToDownload()+" - "+Swinger.percentage(val, max)+"%");
+					
+					setInfoText("TÃ©lÃ©chargement des fichiers "+BarAPI.getNumberOfDownloadedFiles()+" / "+BarAPI.getNumberOfFileToDownload()+" - "+Swinger.percentage(val, max)+"%");
 					setBoundInfo(38, 320, 400, 30);
 				}
 			}
@@ -162,7 +163,7 @@ public class Bootstrap {
 				while(!this.isInterrupted())
 				{
 					if(BarAPI.getNumberOfFileToDownload() ==0 ) {
-						Bootstrap.setInfoText("Vérification des fichiers");
+						Bootstrap.setInfoText("VÃ©rification des fichiers");
 						Bootstrap.setBoundInfo(38, 320, 400, 30);
 						continue;
 					}
@@ -172,7 +173,7 @@ public class Bootstrap {
 					bar.setValue(val);
 					bar.setMaximum(max);
 
-					setInfoText("Téléchargement des fichiers "+BarAPI.getNumberOfDownloadedFiles()+" / "+BarAPI.getNumberOfFileToDownload()+" - "+Swinger.percentage(val, max)+"%");
+					setInfoText("TÃ©lÃ©chargement des fichiers "+BarAPI.getNumberOfDownloadedFiles()+" / "+BarAPI.getNumberOfFileToDownload()+" - "+Swinger.percentage(val, max)+"%");
 					setBoundInfo(38, 320, 400, 30);
 				}
 			}

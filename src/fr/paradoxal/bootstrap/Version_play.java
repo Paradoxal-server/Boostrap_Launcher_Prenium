@@ -79,7 +79,7 @@ public class Version_play extends JFrame implements SwingerEventListener {
 				Bootstrap.doUpdate_pre();
 				Bootstrap.premiun.createNewFile();
 			} catch (Exception e) {
-				Bootstrap.crashReporter.catchError(e, "Impossible de mettre à jour le launcher !");
+				Bootstrap.crashReporter.catchError(e, "Impossible de mettre Ã  jour le launcher !");
 			}
 			Bootstrap.phase_two();
 
@@ -91,7 +91,7 @@ public class Version_play extends JFrame implements SwingerEventListener {
 				Bootstrap.doUpdate_crack();
 				Bootstrap.crack.createNewFile();
 			} catch (Exception e) {
-				Bootstrap.crashReporter.catchError(e, "Impossible de mettre à jour le launcher !");
+				Bootstrap.crashReporter.catchError(e, "Impossible de mettre Ã  jour le launcher !");
 			}
 			Bootstrap.phase_two();
 		}		
